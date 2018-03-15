@@ -3,11 +3,11 @@
 const Controller = require('egg').Controller;
 var WechatAPI = require('co-wechat-api');
 var config = require('../config');
-class HomeController extends Controller {
+class TestController extends Controller {
   async index() {
     var api = new WechatAPI(config.appId, config.appSecret);
-    this.ctx.body = 'hi, egg';
+    this.ctx.body = 'fkIpU1O2iaKK5VoI';
   }
 }
 
-module.exports = HomeController;
+module.exports = TestController;
