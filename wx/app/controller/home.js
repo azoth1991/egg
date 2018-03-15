@@ -1,7 +1,7 @@
 'use strict';
 
 const Controller = require('egg').Controller;
-var WechatAPI = require('co-wechat-api');
+// var WechatAPI = require('co-wechat-api');
 var config = require('../config');
 class HomeController extends Controller {
   async index() {
