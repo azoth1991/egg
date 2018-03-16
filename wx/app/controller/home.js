@@ -9,8 +9,8 @@ class HomeController extends Controller {
     var query = this.ctx.query;
     var ctx = this.ctx;
     // this.ctx.body = 'hi'
-    // getToken(query.code)
-    getToken('071685Tg2Q8kZH0kmsTg2aMNSg2685Tn')
+    getToken(query.code)
+    // getToken('071685Tg2Q8kZH0kmsTg2aMNSg2685Tn')
     .then(function (data) {
       return JSON.parse(data);
     })
