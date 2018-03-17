@@ -36,7 +36,7 @@ class PayController extends Controller {
       total_fee: 1,
       openid: openid,
     });
-    this.ctx.body = prepay_id;
+    this.ctx.body = JSON.parse({info:repay_id});
     // let res = await api.getPayParamsByPrepay({
     //   prepay_id: parseInt(Math.random()*10000000)
     // });
