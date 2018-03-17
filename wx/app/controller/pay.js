@@ -13,7 +13,6 @@ const tenpay = require('tenpay');
 // 	partner_key: config.partner_key, //微信商户平台API密钥
 // 	pfx: fs.readFileSync('./apiclient_cert.p12'), //微信商户平台证书
 // });
-
 const tenPayconfig = {
   appid: config.appId,
   mchid: config.mch_id,
@@ -25,12 +24,25 @@ const tenPayconfig = {
 const api = new tenpay(tenPayconfig);
 class PayController extends Controller {
   async index() {
-    let res = await api.getPayParamsByPrepay({
-      prepay_id: parseInt(Math.random()*10000000)
+    // 获取openid
+    var query = this.ctx.query;
+    var dataStr = await getToken(query.code);
+    console.log(dataStr);
+    var data = JSON.parse(dataStr);
+    var openid = data['openid'];
+    let prepay_id = await api.unifiedOrder({
+      out_trade_no: parseInt(Math.random()*10000000),
+      body: '商品简单描述',
+      total_fee: 1,
+      openid: openid,
     });
-    // this.ctx.body = res;
-    console.log(res);
-    await this.ctx.render('pay/pay.tpl',{...res});
+    this.ctx.body = prepay_id;
+    // let res = await api.getPayParamsByPrepay({
+    //   prepay_id: parseInt(Math.random()*10000000)
+    // });
+    // // this.ctx.body = res;
+    // console.log(res);
+    // await this.ctx.render('pay/pay.tpl',{...res});
   }
 }
 
