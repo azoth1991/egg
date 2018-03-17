@@ -21,27 +21,23 @@ const tenPayconfig = {
   notify_url: 'http://www.goodluck78.com/home',
   // spbill_create_ip: 'IP地址'
 };
-const api = new tenpay(tenPayconfig);
+const api = new tenpay(tenPayconfig, true);
 class PayController extends Controller {
   async index() {
     // 获取openid
     var query = this.ctx.query;
     var dataStr = await getToken(query.code);
-    console.log(dataStr);
     var data = JSON.parse(dataStr);
-    let prepay_id = await api.unifiedOrder({
-      out_trade_no: parseInt(Math.random()*10000000),
-      body: '商品简单描述',
-      total_fee: 1,
+    console.log('openid',data['openid']);
+    let res = await api.getPayParams({
+      out_trade_no:'123',
+      body: 'testees',
+      total_fee: '1',
       openid: data['openid'],
     });
-    this.ctx.body = JSON.parse({info:prepay_id});
-    // let res = await api.getPayParamsByPrepay({
-    //   prepay_id: parseInt(Math.random()*10000000)
-    // });
-    // // this.ctx.body = res;
-    // console.log(res);
-    // await this.ctx.render('pay/pay.tpl',{...res});
+    // this.ctx.body = res;
+    console.log(res);
+    await this.ctx.render('pay/pay.tpl',{...res});
   }
 }
 

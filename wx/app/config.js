@@ -4,5 +4,5 @@ module.exports = {
     'appSecret': '4e7408d2848273efc8924c3a21882824',
     'encodingAESKey': '9BvBc4fTmCPByxTirFcEp7JSAO5OsBiMza5cAk6o4In',
     'mch_id': '1499314672',
-    'partner_key': 'lkasjdlfhlshdfha1231jh1j4h1k2j4l',
+    'partner_key': 'Ssfkjsf234Tsfsf3452243svffffasdf',
 }
