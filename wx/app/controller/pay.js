@@ -29,14 +29,13 @@ class PayController extends Controller {
     var dataStr = await getToken(query.code);
     console.log(dataStr);
     var data = JSON.parse(dataStr);
-    var openid = data['openid'];
     let prepay_id = await api.unifiedOrder({
       out_trade_no: parseInt(Math.random()*10000000),
       body: '商品简单描述',
       total_fee: 1,
-      openid: openid,
+      openid: data['openid'],
     });
-    this.ctx.body = JSON.parse({info:repay_id});
+    this.ctx.body = JSON.parse({info:prepay_id});
     // let res = await api.getPayParamsByPrepay({
     //   prepay_id: parseInt(Math.random()*10000000)
     // });
