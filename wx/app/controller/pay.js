@@ -23,14 +23,14 @@ const tenPayconfig = {
   // spbill_create_ip: 'IP地址'
 };
 const api = new tenpay(tenPayconfig);
-
-
 class PayController extends Controller {
   async index() {
     let res = await api.getPayParamsByPrepay({
       prepay_id: '123'
     });
+    // this.ctx.body = res;
     console.log(res);
+    await this.ctx.render('pay/pay.tpl',{...res});
   }
 }
 
