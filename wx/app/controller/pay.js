@@ -28,7 +28,6 @@ class PayController extends Controller {
     var query = this.ctx.query;
     var dataStr = await getToken(query.code);
     var data = JSON.parse(dataStr);
-    console.log('openid',data['openid']);
     let res = await api.getPayParams({
       out_trade_no:'123',
       body: 'testees',
