@@ -8,9 +8,14 @@ class HomeController extends Controller {
   async index() {
     var query = this.ctx.query;
     var ctx = this.ctx;
-    var dataStr = await getToken(query.code);
-    var data = JSON.parse(dataStr);
-    this.ctx.body = await getUserInfo(data['access_token'], data['openid'])
+    if(query.code){
+      var dataStr = await getToken(query.code);
+      var data = JSON.parse(dataStr);
+      var userInfo = await getUserInfo(data['access_token'], data['openid'])
+      await this.ctx.render('pay/home.tpl',{userInfo:JSON.stringify(userInfo)});
+    } else {
+      await this.ctx.render('pay/home.tpl',{userInfo:true});
+    }
   }
 }
 
