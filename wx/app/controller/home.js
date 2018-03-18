@@ -12,9 +12,9 @@ class HomeController extends Controller {
       var dataStr = await getToken(query.code);
       var data = JSON.parse(dataStr);
       var userInfo = await getUserInfo(data['access_token'], data['openid'])
-      await this.ctx.render('pay/home.tpl',{userInfo:JSON.stringify(userInfo)});
+      await this.ctx.render('pay/home.tpl',{openid:userInfo['openid']});
     } else {
-      await this.ctx.render('pay/home.tpl',{userInfo:''});
+      await this.ctx.render('pay/home.tpl',{openid:''});
     }
   }
 }
