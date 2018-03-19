@@ -5,6 +5,6 @@
   <body>
   </body>
   <script>
-      window.location.href = `http://172.31.110.107:3000/index.html?openid={{openid}}`
+      window.location.href = `http://101.37.151.85:8089/mahjong/index.html?wechatId={{openid}}`
 </script>
 </html>
