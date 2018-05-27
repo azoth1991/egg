@@ -12,8 +12,8 @@ function saveUserInfo(info) {
   console.log(options.url);
   return new Promise((resolve, reject) => {
     request(options, function (err, res, body) {
+      console.log(err, res, body)
       if (res) {
-        console.log(body)
         resolve(body);
       } else {
         reject(err);
