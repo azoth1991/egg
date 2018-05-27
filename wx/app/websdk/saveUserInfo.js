@@ -4,7 +4,7 @@ const qs = require('querystring');
 const config = require('../config');
 
 function saveUserInfo(info) {
-  let reqUrl = `http://101.37.151.85:8008/socket/regUser`;
+  let reqUrl = `http://101.37.151.85:8008/socket/regUser?`;
   let params = {
     openid: info['openid'],
     nickname: info['nickname'],
