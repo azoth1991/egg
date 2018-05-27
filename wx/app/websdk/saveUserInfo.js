@@ -4,10 +4,20 @@ const qs = require('querystring');
 const config = require('../config');
 
 function saveUserInfo(info) {
-  let reqUrl = `http://101.37.151.85:8008/socket/regUser?openid=${info['openid']}&nickname=${info['nickname']}&sex=${info['sex']}&language=${info['language']}&city=${info['city']}&province=${info['province']}&headimgurl=${info['headimgurl']}&country=${info['country']}`;
+  let reqUrl = `http://101.37.151.85:8008/socket/regUser`;
+  let params = {
+    openid: info['openid'],
+    nickname: info['nickname'],
+    sex: info['sex'],
+    language: info['language'],
+    city: info['city'],
+    province: info['province'],
+    headimgurl: info['headimgurl'],
+    country: info['country']
+  };
   let options = {
     method: 'get',
-    url: reqUrl
+    url: reqUrl+qs.stringify(params)
   };
   console.log(options.url);
   return new Promise((resolve, reject) => {
